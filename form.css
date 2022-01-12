@@ -1,0 +1,86 @@
+@charset "utf-8";
+/* input init */
+input {
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	margin: 0;
+}
+input::-ms-clear {
+	display: none;
+}
+select {
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+}
+* IE 에서 Select box 화살표 제거 */ 
+select::-ms-expand {
+	display: none;
+}
+input[type="checkbox"] {
+  border: none!important;
+  outline: none;
+  display: none;
+}
+
+/* searchform */
+#search-container {
+  width: 868px;
+  margin: auto;
+  box-sizing: border-box;
+  padding: 10px 0;
+}
+/********************************************* 01. check * 4 ***********************/
+#search-container .check-items {
+  display: flex;
+  justify-content: space-between;
+}
+
+#search-container .check-items label {
+  width: 23%;
+  background-color: rgb(240, 109, 61);
+  border-radius: 4px;
+  color: white;
+  box-sizing: border-box;
+  padding: 6px 20px 6px 50px;
+  font-weight: bold;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 1rem;
+  line-height: 1.2;
+  cursor: pointer;
+}
+#search-container .check-items label span.check-icon {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background-color: white;
+  top: 50%;
+  left: 10px;
+  border-radius: 3px;
+  transform: translateY(-50%);
+}
+/* #search-container .check-items input[type="checkbox"]:checked ~ label {
+  background-color: orange;
+} */
+#search-container .check-items input[type="checkbox"]:checked + .check-icon {
+  background-color: aqua;
+}
+
+/********************************************* 02. select * 5 ***********************/
+
+#search-container .select-items {
+  margin-top: 14px;
+  display: flex;
+  gap: 4px;
+}
+#search-container .select-items select {
+  border: none;
+  outline: none;
+  padding: 10px;
+  width: 35%;
+  background-color: #eee;
+}

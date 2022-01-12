@@ -14,5 +14,7 @@ $posts = get_posts(array(
 <p><?php the_excerpt(); ?></p>
 <p><a href="<?php the_permalink() ?>">続きを見る</a></p>
 <!--表示する内容ここまで-->
+
+
  
 <?php endforeach; endif; ?>
