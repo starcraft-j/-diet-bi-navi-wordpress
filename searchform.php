@@ -46,7 +46,7 @@
         </select>
       </div>
       <div class="select-wrap">
-        <select name="jenre">
+        <select name="njenre">
           <option value="">サプリタイプ</option>
           <option value="脂肪対策サプリ">脂肪対策サプリ</option>
           <option value="糖質ケアサプリ">糖質ケアサプリ</option>

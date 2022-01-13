@@ -16,7 +16,7 @@ if($_GET['option'] == '') {
   $s = $_GET['s'];
   $price = $_GET['price'];
   $regularly = $_GET['regularly'];
-  $jenre = $_GET['jenre'];
+  $jenre = $_GET['njenre'];
   $plan = $_GET['plan'];
   $ranking = $_GET['ranking'];
   $osudo = $_GET['osusume'];
@@ -73,14 +73,6 @@ if(empty($_GET['order'])){
   $order = "desc";
 }
 
-if($jenre){
-    $metaquerysp[] = array(
-    'key'=>'jenre',
-    'value'=> $jenre,
-    'compare'=>'LIKE',
-    'type'=>'CHAR'
-    );
-}
 if($osudo == "1"){
     $metaquerysp[] = array(
     'key'=>'osusume',
@@ -224,6 +216,14 @@ if ($_GET['onedayprice'] == "150") {
   );
 }
 if($_GET['option'] == '') {
+    if($jenre){
+      $metaquerysp[] = array(
+      'key'=>'jenre',
+      'value'=> $jenre,
+      'compare'=>'LIKE',
+      'type'=>'CHAR'
+      );
+  }
   if (is_array($rules)) {
       foreach($rules as $val){
         $metaquerysp[] = array(
@@ -240,6 +240,15 @@ if($_GET['option'] == '') {
       );
   }
 } else {
+  if($jenre){
+    $metaquerysp[] = array(
+    'key'=>'njenre',
+    'value'=> $jenre,
+    'compare'=>'LIKE',
+    'type'=>'CHAR'
+    );
+  }
+
   if(is_array($rulesN)) {
     foreach($rulesN as $val){
       $metaquerysp[] = array(
@@ -289,7 +298,7 @@ if ($ranking == "1") {
     $args = array(
         'meta_query' => array($metaquerysp),
         'post_status' => 'publish',
-        'orderby' =>'meta_value_num',
+        'orderby' =>'menu_order',
         'order' => $order,
         'meta_key' => $metakey,
         's' => $s,
