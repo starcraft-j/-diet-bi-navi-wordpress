@@ -20,9 +20,7 @@ if($_GET['option'] == '') {
   $plan = $_GET['plan'];
   $ranking = $_GET['ranking'];
   $osudo = $_GET['osusume'];
-  if(isset($_GET['kodawari'])){
-    $rulesN = $_GET['kodawari'];
-  }
+  $rulesN = $_GET['kodawari'];
 }
 
 
@@ -225,23 +223,41 @@ if ($_GET['onedayprice'] == "150") {
     'type'=>'NUMERIC'
   );
 }
-  if(!$_GET['option'] == 'new') {
-    if (is_array($rules)) {
-        foreach($rules as $val){
-          $metaquerysp[] = array(
-            'key'=>'rules',
-            'value'=> $val,
-            'compare'=>'LIKE',
-          );
-        }
-    } else {
+if($_GET['option'] == '') {
+  if (is_array($rules)) {
+      foreach($rules as $val){
         $metaquerysp[] = array(
           'key'=>'rules',
-          'value'=> $rules,
+          'value'=> $val,
           'compare'=>'LIKE',
         );
-    }
+      }
+  } else {
+      $metaquerysp[] = array(
+        'key'=>'rules',
+        'value'=> $rules,
+        'compare'=>'LIKE',
+      );
   }
+} else {
+  if(is_array($rulesN)) {
+    foreach($rulesN as $val){
+      $metaquerysp[] = array(
+        'key'=>'kodawari',
+        'value'=> $val,
+        'compare'=>'LIKE',
+        'type'=>'CHAR'
+      );
+    }
+  } else {
+    $metaquerysp[] = array(
+        'key'=>'kodawari',
+        'value'=> $rulesN,
+        'compare'=>'LIKE',
+        'type'=>'CHAR'
+      );
+  }
+}
 if ($ranking == "1") {
   $args = array(
       'meta_query' => array($metaquerysp),
@@ -287,25 +303,7 @@ if ($ranking == "1") {
   };
 }
 
-if($_GET['option'] == "new") {
-  if(is_array($rulesN)) {
-    foreach($rulesN as $val){
-      $metaquerysp[] = array(
-        'key'=>'kodawari',
-        'value'=> $val,
-        'compare'=>'LIKE',
-        'type'=>'CHAR'
-      );
-    }
-  } else {
-    $metaquerysp[] = array(
-        'key'=>'kodawari',
-        'value'=> $rulesN,
-        'compare'=>'LIKE',
-        'type'=>'CHAR'
-      );
-  }
-}
+
 ?>
 
 <?php $metaquerysp['relation'] = 'AND'; ?>
@@ -435,58 +433,67 @@ $get_num = $query->post_count;
 </form>
 
 <form class="table" id="sort_form4" action="<?php echo home_url( '/' ); ?>" method="get">
-  <?php foreach ($_GET as $k => $v){
-                   if($k != "order") {
-                   if($k != "metakey") {
-                             if(is_array($v)){ 
-                                  foreach ($v as $n) { ?>
-  <input type="hidden" value="<?php echo $n; ?>" name="<?php echo $k; ?>[]">
+  <?php 
+    foreach ($_GET as $k => $v){
+      if($k != "order") {
+      if($k != "metakey") {
+        if(is_array($v)){ 
+          foreach ($v as $n) { 
+  ?>
+            <input type="hidden" value="<?php echo $n; ?>" name="<?php echo $k; ?>[]">
   <?php } ?>
-  <?php }else{ ?>
+  <?php } else { ?>
   <input type="hidden" value="<?php echo $v; ?>" name="<?php echo $k; ?>">
-  <?php     }
-                         }
-                         }
-} ?>
+  <?php
+        }
+      }
+    }
+  } ?>
   <input type="hidden" value="jenre2" name="metakey">
-  <input type="hidden" value="<?php if($order == "desc"){ echo "asc"; }elseif($order == "asc"){ echo "desc"; } ?>"
-    name="order">
+  <input type="hidden" value="<?php if($order == "desc"){ echo "asc"; }elseif($order == "asc"){ echo "desc"; } ?>" name="order">
 </form>
+
 <form class="table" id="sort_form5" action="<?php echo home_url( '/' ); ?>" method="get">
-  <?php foreach ($_GET as $k => $v){
-                   if($k != "order") {
-                   if($k != "metakey") {
-                             if(is_array($v)){ 
-                                  foreach ($v as $n) { ?>
-  <input type="hidden" value="<?php echo $n; ?>" name="<?php echo $k; ?>[]">
+  <?php 
+    foreach ($_GET as $k => $v){
+      if($k != "order") {
+      if($k != "metakey") {
+        if(is_array($v)){ 
+          foreach ($v as $n) { 
+  ?>
+            <input type="hidden" value="<?php echo $n; ?>" name="<?php echo $k; ?>[]">
   <?php } ?>
-  <?php }else{ ?>
+  <?php } else { ?>
   <input type="hidden" value="<?php echo $v; ?>" name="<?php echo $k; ?>">
-  <?php     }
-                         }
-                         }
-} ?>
+  <?php
+        }
+      }
+    }
+  } ?>
   <input type="hidden" value="jenre" name="metakey">
-  <input type="hidden" value="<?php if($order == "desc"){ echo "asc"; }elseif($order == "asc"){ echo "desc"; } ?>"
-    name="order">
+  <input type="hidden" value="<?php if($order == "desc"){ echo "asc"; }elseif($order == "asc"){ echo "desc"; } ?>" name="order">
 </form>
+
 <form class="table" id="sort_form6" action="<?php echo home_url( '/' ); ?>" method="get">
-  <?php foreach ($_GET as $k => $v){
-                   if($k != "order") {
-                   if($k != "metakey") {
-                             if(is_array($v)){ 
-                                  foreach ($v as $n) { ?>
-  <input type="hidden" value="<?php echo $n; ?>" name="<?php echo $k; ?>[]">
+  <?php 
+    foreach ($_GET as $k => $v){
+      if($k != "order") {
+      if($k != "metakey") {
+        if(is_array($v)){ 
+          foreach ($v as $n) { 
+  ?>
+            <input type="hidden" value="<?php echo $n; ?>" name="<?php echo $k; ?>[]">
   <?php } ?>
-  <?php }else{ ?>
+  <?php } else { ?>
   <input type="hidden" value="<?php echo $v; ?>" name="<?php echo $k; ?>">
-  <?php     }
-                         }
-                         }
-} ?>
+  <?php
+        }
+      }
+    }
+  } ?>
   <input type="hidden" value="regularly" name="metakey">
-  <input type="hidden" value="<?php if($order == "desc"){ echo "asc"; }elseif($order == "asc"){ echo "desc"; } ?>"
-    name="order">
+  <input type="hidden" value="<?php if($order == "desc"){ echo "asc"; }elseif($order == "asc"){ echo "desc"; } ?>" name="order">
+  
 </form>
 
 
@@ -559,6 +566,7 @@ jQuery(".sortvolume").click(function() {
   $ex = get_field('ex');
   $rank = get_field('rank');
   $osusume = get_field('osusume');
+  $kodawari = get_field('kodawari');
 
 ?>
 
@@ -616,6 +624,17 @@ jQuery(".sortvolume").click(function() {
       echo $jenre;
       } ?>
     </div>
+    <?php if($_GET['option'] == "new") : ?>
+    <div class="detail-kodawari">
+    <div class="sp dtitle2">こだわり条件</div><?php if(is_array($rulesN)){
+          foreach($rulesN as $value){
+          echo $value;
+          } 
+      }else{ 
+      echo $rulesN;
+      } ?>
+    </div>
+    <?php endif; ?>
     <div class="detailurl pc"><a href="https://bi-navi.com<?php echo $url; ?><?php echo $query2; ?>"
         target="_blank"><img src="<?php echo esc_url( get_template_directory_uri() ); ?>/img/searchlinkbutton.png"
           width="100%"></a></div>
