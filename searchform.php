@@ -60,7 +60,7 @@
       </div>
       <div class="select-wrap">
         <select name="plan">
-          <option value="">割引ブラン</option>
+          <option value="">割引プラン</option>
           <option value="初回限定価格あり">初回限定価格あり</option>
           <option value="定期コース割引あり">定期コース割引あり</option>
         </select>
@@ -109,7 +109,7 @@
         </div>
         <div class="select-wrap">
           <select name="plan">
-            <option value="">割引ブラン</option>
+            <option value="">割引プラン</option>
             <option value="初回限定価格あり">初回限定価格あり</option>
             <option value="定期コース割引あり">定期コース割引あり</option>
           </select>
