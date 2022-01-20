@@ -5,7 +5,7 @@
 
 <?php if(is_page('search-new') || $_GET["option"] == "new") : ?>
 
-  <link rel="stylesheet" href="<?php echo esc_url( get_template_directory_uri() ); ?>/form.css" />
+  <link rel="stylesheet" href="<?php echo esc_url( get_template_directory_uri() ); ?>/form.css?<?php echo time(); ?>" />
 
 <div id="search-container">
   <form role="search" method="get" id="searchform" action="<?php echo home_url( '/' ); ?>" >
@@ -55,6 +55,7 @@
           <option value="酵素サプリ">酵素サプリ</option>
           <option value="酵素ドリンク">酵素ドリンク</option>
           <option value="スムージー">スムージー</option>
+          <option value="尿酸値ケアサプリ">尿酸値ケアサプリ</option>
         </select>
       </div>
       <div class="select-wrap">
@@ -125,9 +126,11 @@
     <?php endif; ?>
 
     <div class="searchbutton pc">
-      <button type="submit"><img src="<?php print get_template_directory_uri(); ?>/img/searchbutton.png" width="100%"></button>
+      <button type="submit"><img src="<?php print get_template_directory_uri(); ?>/img/new-search-btn.png" width="100%"></button>
     </div>
-  
+    <div class="searchbutton sp">
+      <button type="submit"><img src="<?php print get_template_directory_uri(); ?>/img/new-search-btn.png" width="100%"></button>
+    </div>
   </form>
 </div>
 
