@@ -270,6 +270,7 @@ if($_GET['option'] == '') {
 if ($ranking == "1") {
   $args = array(
       'meta_query' => array($metaquerysp),
+      'category_name' => 'search',
       'posts_per_page' => 3,
       'post_status' => 'publish',
       'orderby' =>'meta_value_num',
@@ -279,6 +280,7 @@ if ($ranking == "1") {
 } elseif($ranking == "2") {
   $args = array(
       'meta_query' => array($metaquerysp),
+      'category_name' => 'search',
       'offset' => 3,
       'post_status' => 'publish',
       'orderby' =>'meta_value_num',
@@ -289,6 +291,7 @@ if ($ranking == "1") {
   if(!empty($order) || !empty($metakey)){
     $args = array(
         'meta_query' => array($metaquerysp),
+        'category_name' => 'search',
         'post_status' => 'publish',
         'orderby' =>'meta_value_num',
         'order' => $order,
@@ -297,6 +300,7 @@ if ($ranking == "1") {
 } elseif ($_GET['option'] == "new") {
     $args = array(
         'meta_query' => array($metaquerysp),
+        'category_name' => 'search',
         'post_status' => 'publish',
         'orderby' =>'menu_order',
         'order' => $order,
@@ -306,6 +310,7 @@ if ($ranking == "1") {
 }else{
     $args = array(
         'meta_query' => array($metaquerysp),
+        'category_name' => 'search',
         'post_status' => 'publish',
         'orderby' =>'meta_value_num',
     );
@@ -333,7 +338,7 @@ $get_num = $query->post_count;
 </div>
 
 
-<div class="resultvalue"> 検索結果：<span><?php echo $get_num - 9; ?></span>件
+<div class="resultvalue"> 検索結果：<span><?php echo $get_num; ?></span>件
   <!-- <a href=""><img src="<?php echo esc_url( get_template_directory_uri() ); ?>/img/researchbutton.png" width="282" class="middle"><span class="sp">再検索する</span></a> -->
 </div>
 
@@ -876,8 +881,7 @@ $get_num = $query->post_count;
 
 <?php if(strpos($url,"bouhu")) : ?>
   <?php continue; ?>
-<?php elseif($post->ID == 369 || $post->ID == 1190 || $post->ID == 1287 || $post->ID == 1543 || $post->ID == 1553 || $post->ID == 1555 || $post->ID == 1059 || $post->ID == 1061 || $post->ID == 1391) : ?>
-  <?php continue; ?>
+
 <?php else : ?>
   <?php if($_GET['option'] == "new") : ?>
     <div class="flex-detail-box">
